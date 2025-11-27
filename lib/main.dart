@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './src/screen/recharge_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,12 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 32, 121, 87)),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 32, 121, 87)),
         useMaterial3: true,
       ),
       home: const RechargeScreen(),
+      //hello
     );
   }
 }
-
-
