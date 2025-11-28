@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'show_recharge_confirmation.dart';
-import 'show_recharge_confirmation_mobile.dart';
 
 class RechargeForm extends StatefulWidget {
   final String selectedPractice;
@@ -49,7 +48,7 @@ class _RechargeFormState extends State<RechargeForm> {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
+    // final double width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
