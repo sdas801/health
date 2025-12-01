@@ -33,6 +33,13 @@ class _ShowRechargeConfirmationLargeState extends State<ShowRechargeConfirmation
                   // Header
                   Row(
                     children: [
+                      GestureDetector(
+                        onTap: ()=> Navigator.of(context).pop(),
+                        child: Icon(
+                          Icons.chevron_left,
+                          size: 40,
+                        ),
+                      ),
                       const Text(
                         "Confirm Recharge",
                         style: TextStyle(

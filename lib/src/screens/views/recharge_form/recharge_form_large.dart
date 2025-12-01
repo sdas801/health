@@ -42,20 +42,18 @@ class _RechargeFormLargeState extends State<RechargeFormLarge> {
 
   @override
   Widget build(BuildContext context) {
-    // final double width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField(
           value: selectedPractice,
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
             labelText: "Practice Name",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: const BorderRadius.all(Radius.circular(10),),),
+            focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
           ),
           items: ['Practice Name', 'Practice 2', 'Practice 3']
-              .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+              .map((e) => DropdownMenuItem(value: e, child: Text(e),),)
               .toList(),
           onChanged: (v) => setState(() => selectedPractice = v!),
         ),
@@ -79,12 +77,11 @@ class _RechargeFormLargeState extends State<RechargeFormLarge> {
           }).toList(),
         ),
         const SizedBox(height: 20),
-        const TextField(
+         TextField(
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: BorderRadius.all(Radius.circular(10),),),
+            focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
             hintText: "Enter custom amount",
           ),
         ),

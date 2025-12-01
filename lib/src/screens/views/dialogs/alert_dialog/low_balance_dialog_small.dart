@@ -89,17 +89,30 @@ class _LowBalanceDialogSmallState extends State<LowBalanceDialogSmall> {
                   return ChoiceChip(
                     label: Text("₹ $e"),
                     showCheckmark: false,
-
+                    side: BorderSide.none,
+                    backgroundColor: Colors.grey.shade300,
+                    selectedColor: const Color.fromARGB(255, 238, 252, 238),
+                    labelStyle: TextStyle(
+                        color: selectedAmount == e
+                            ? const Color.fromARGB(255, 61, 140, 134)
+                            : Colors.black),
                     selected: selectedAmount == e,
                     onSelected: (_) => _selectAmount(e),
                   );
                 }).toList(),
               ),
               const SizedBox(height: 16),
-              const TextField(
+               TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                 enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(color: Colors.grey.shade300)
+                    ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+
+                     ),
                   hintText: "Enter custom amount",
                 ),
               ),

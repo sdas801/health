@@ -49,12 +49,14 @@ void _selectAmount(int amount) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField(
+          
           value: selectedPractice,
           decoration:  InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
             labelText: "Practice Name",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: BorderRadius.all(Radius.circular(10),),),
+            focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
           ),
           items: ['Practice Name', 'Practice 2', 'Practice 3']
               .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -81,12 +83,18 @@ void _selectAmount(int amount) {
           }).toList(),
         ),
         const SizedBox(height: 20),
-        const TextField(
+         TextField(
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderSide: BorderSide(color: Colors.grey.shade300)
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+
             ),
             
             hintText: "Enter custom amount",

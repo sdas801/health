@@ -28,8 +28,11 @@ class _CriticalLowDialogLargeState extends State<CriticalLowDialogLarge> {
       child: SizedBox(
         width: 400,
         child: DecoratedBox(
+          
           decoration: const BoxDecoration(color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(16))
+          
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+          
           ),
           child: Padding(
             padding: const EdgeInsets.all(24.0),
@@ -88,24 +91,33 @@ class _CriticalLowDialogLargeState extends State<CriticalLowDialogLarge> {
               ),
               const SizedBox(height: 16),
               Wrap(
-                spacing: 12,
-                children: amounts.map((e) {
-                  return ChoiceChip(
+          spacing: 12,
+          children: amounts.map((e) {
+            return ChoiceChip(
+              
+              label: Text("₹ $e"),
                     showCheckmark: false,
-                    label: Text("₹ $e"),
-                    selected: selectedAmount == e,
-                    onSelected: (_) => _selectAmount(e),
-                  );
-                }).toList(),
-              ),
+                    side: BorderSide.none,
+                    backgroundColor: Colors.grey.shade300 ,
+              selectedColor: const Color.fromARGB(255, 238, 252, 238),
+              labelStyle: TextStyle(color: selectedAmount == e?  const Color.fromARGB(255, 61, 140, 134) : Colors.black),
+              selected: selectedAmount == e,
+              onSelected: (_) => _selectAmount(e),
+            );
+          }).toList(),
+        ),
               const SizedBox(height: 16),
-              const TextField(
+               TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(color: Colors.grey)
-                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(color: Colors.grey.shade300)
+                    ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+
+                     ),
                   
                   hintText: "Enter custom amount",
                 ),
