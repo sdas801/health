@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
-import '../order_summary.dart';
+import '../../../order_summary.dart';
 
-class ShowRechargeConfirmation extends StatefulWidget {
-  const ShowRechargeConfirmation({super.key});
+class ShowRechargeConfirmationSmall extends StatefulWidget {
+  const ShowRechargeConfirmationSmall({super.key});
 
   @override
-  State<ShowRechargeConfirmation> createState() => _ShowRechargeConfirmationState();
+  State<ShowRechargeConfirmationSmall> createState() =>
+      _ShowRechargeConfirmationSmallState();
 }
 
-class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
+class _ShowRechargeConfirmationSmallState
+    extends State<ShowRechargeConfirmationSmall> {
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+
+    return SizedBox(
+      width: double.infinity,
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white
-          ),
-          width: 400,
-          padding: const EdgeInsets.all(24),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,23 +31,27 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
               // Header
               Row(
                 children: [
-                  const SizedBox(width: 12),
-                  const Text(
-                    "Confirm Recharge",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: ()=> Navigator.of(context).pop(),
+                        child: Icon(
+                          Icons.chevron_left,
+                          size: 40,
+                        ),
+                      ),
+                      Text(
+                        "Confirm Recharge",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.pop(context),
-                  ),
+                  
                 ],
               ),
               const SizedBox(height: 24),
-              
+
               // Practice Name
               const Text(
                 "Practice Name",
@@ -61,7 +66,7 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 24),
-              
+
               // Recharge Amount
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +88,7 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
                 ],
               ),
               const SizedBox(height: 16),
-              
+
               // GST
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,9 +109,9 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
                   ),
                 ],
               ),
-              
+
               const Divider(height: 32, thickness: 1),
-              
+
               // Final Payable
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,7 +133,7 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
                 ],
               ),
               const SizedBox(height: 32),
-              
+
               // Buttons
               Row(
                 children: [
@@ -155,7 +160,10 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const OrderSummary()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const OrderSummary()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3D8C86),
@@ -178,6 +186,7 @@ class _ShowRechargeConfirmationState extends State<ShowRechargeConfirmation> {
             ],
           ),
         ),
-      );
+      ),
+    );
   }
 }

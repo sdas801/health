@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'recharge_fail_dialog.dart';
-import 'recharge_success_dialog.dart';
+import 'dialogs/recharge_dialog/recharge_fail_dialog_large.dart';
+import 'dialogs/recharge_dialog/recharge_fail_dialog_small.dart';
+import 'dialogs/recharge_dialog/recharge_success_dialog_large.dart';
+import 'dialogs/recharge_dialog/recharge_success_dialog_small.dart';
 import 'upi_tile.dart';
 
 class RechargeQr extends StatefulWidget {
@@ -15,29 +17,48 @@ class RechargeQr extends StatefulWidget {
 class _RechargeQrState extends State<RechargeQr> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(height: 40),
 
         // QR
-        GestureDetector(
-          onTap: () {
-            _showSuccessDialog(context);
-          },
-          // onTap: () {
-          //   _showFailDialog(context);
-            
-          // },
-          child: Container(
-            height: widget.pageWidth < 600 ? 100 : 180,
-            width: widget.pageWidth < 600 ? 100 : 180,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage("assets/images/qr.png"),
-              fit: BoxFit.cover,
-            )),
-          ),
+        Stack(
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                onTap: () => width < 600 ? showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => const RechargeFailDialogSmall(),
+                  ):_showFailDialog(context),
+                child: Container(color: Colors.transparent),
+              ),
+            ),
+            Center(
+              child: GestureDetector(
+                onTap: () => width < 600 ? showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => const RechargeSuccessDialogSmall(),
+                  ):_showSuccessDialog(context),
+                child: SizedBox(
+                  height: widget.pageWidth < 600 ? 150 : 200,
+                  width: widget.pageWidth < 600 ? 150 : 200,
+                  child: const DecoratedBox(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage("assets/images/qr.png"),
+                      fit: BoxFit.cover,
+                    )),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 12),
         Row(
@@ -167,6 +188,7 @@ void _showSuccessDialog(BuildContext context) {
     builder: (context) => const RechargeSuccessDialog(),
   );
 }
+
 void _showFailDialog(BuildContext context) {
   showDialog(
     context: context,

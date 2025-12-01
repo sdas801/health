@@ -1,64 +1,58 @@
 import 'package:flutter/material.dart';
 
-import 'show_recharge_confirmation.dart';
-import 'show_recharge_confirmation_mobile.dart';
+import '../dialogs/show_recharge_confirmation/show_recharge_confirmation_large.dart';
 
-class RechargeFormMobile extends StatefulWidget {
+class RechargeFormLarge extends StatefulWidget {
   final String selectedPractice;
   final List<int> amounts;
   final int selectedAmount;
-  final TextEditingController amountController;
-
-  const RechargeFormMobile({
+  const RechargeFormLarge({
     super.key,
     required this.selectedPractice,
     required this.amounts,
     required this.selectedAmount,
-    required this.amountController,
-    
-    });
+  });
 
   @override
-  State<RechargeFormMobile> createState() => _RechargeFormMobileState();
+  State<RechargeFormLarge> createState() => _RechargeFormLargeState();
 }
 
-class _RechargeFormMobileState extends State<RechargeFormMobile> {
+class _RechargeFormLargeState extends State<RechargeFormLarge> {
   late String selectedPractice;
   late List<int> amounts;
   late int selectedAmount;
-  late TextEditingController amountController;
-
-@override
+  @override
   void dispose() {
-    amountController.dispose();
     super.dispose();
   }
 
-@override
+  @override
   void initState() {
     super.initState();
     selectedPractice = widget.selectedPractice;
     amounts = widget.amounts;
     selectedAmount = widget.selectedAmount;
-    amountController = widget.amountController;
   }
 
-void _selectAmount(int amount) {
+  void _selectAmount(int amount) {
     setState(() {
       selectedAmount = amount;
-      amountController.text = amount.toString();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    // final double width = MediaQuery.of(context).size.width;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField(
           value: selectedPractice,
           decoration: const InputDecoration(
             labelText: "Practice Name",
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
           ),
           items: ['Practice Name', 'Practice 2', 'Practice 3']
               .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -72,18 +66,25 @@ void _selectAmount(int amount) {
           spacing: 12,
           children: amounts.map((e) {
             return ChoiceChip(
+              
               label: Text("₹ $e"),
+                    showCheckmark: false,
+                    side: BorderSide.none,
+                    backgroundColor: Colors.grey.shade300 ,
+              selectedColor: const Color.fromARGB(255, 238, 252, 238),
+              labelStyle: TextStyle(color: selectedAmount == e?  const Color.fromARGB(255, 61, 140, 134) : Colors.black),
               selected: selectedAmount == e,
               onSelected: (_) => _selectAmount(e),
             );
           }).toList(),
         ),
         const SizedBox(height: 20),
-        TextField(
-          controller: amountController,
+        const TextField(
           keyboardType: TextInputType.number,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
             hintText: "Enter custom amount",
           ),
         ),
@@ -97,25 +98,23 @@ void _selectAmount(int amount) {
                   borderRadius: BorderRadius.circular(10)),
               backgroundColor: Colors.teal.shade600,
             ),
-            onPressed: () => showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    builder: (context) => const ShowRechargeConfirmationMobile(),
-                  ),
+            onPressed: () {
+              _showRechargeConfirmation(context);
+            },
             child: const Text("Recharge Now",
-                style: TextStyle(fontSize: 16, color: Colors.white),),
+                style: TextStyle(fontSize: 16, color: Colors.white)),
           ),
         ),
       ],
     );
   }
 }
+
 void _showRechargeConfirmation(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const ShowRechargeConfirmation();
+      return const ShowRechargeConfirmationLarge();
     },
   );
 }

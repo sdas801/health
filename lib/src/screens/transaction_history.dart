@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/screen/constants/transaction_search.dart';
-import 'package:my_app/src/screen/constants/transaction_tile.dart';
+import 'package:my_app/src/screens/views/transaction_search.dart';
+import 'package:my_app/src/screens/views/transaction_tile.dart';
 
 import '../contants/preferred_size_app_bar.dart';
-import 'constants/transaction_tile_mobile.dart';
+import 'views/transaction_tile_mobile.dart';
 
 class TransactionHistory extends StatefulWidget {
   const TransactionHistory({super.key});
@@ -28,10 +28,9 @@ class _TransactionHistoryState extends State<TransactionHistory> {
     return Scaffold(
       appBar: width < 600
           ? null
-          : PreferredSize(
-              preferredSize: const Size.fromHeight(65),
+          : const PreferredSize(
+              preferredSize: Size.fromHeight(65),
               child: PreferredSizeAppBar(
-                controller: _searchController,
               ),
             ),
       body: SafeArea(

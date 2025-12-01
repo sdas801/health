@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PreferredSizeAppBar extends StatelessWidget {
-  final TextEditingController controller;
 
-  const PreferredSizeAppBar({super.key, required this.controller});
+  const PreferredSizeAppBar({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +17,8 @@ class PreferredSizeAppBar extends StatelessWidget {
         height: 45,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: const BoxDecoration(color: Colors.white),
-        child: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
+        child: const TextField(
+          decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             border: InputBorder.none,

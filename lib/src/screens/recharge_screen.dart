@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/screen/constants/recharge_form_mobile.dart';
-import 'package:my_app/src/screen/transaction_history.dart';
+import 'package:my_app/src/screens/transaction_history.dart';
 import '../contants/preferred_size_app_bar.dart';
-import 'constants/recharge_form.dart';
-import 'constants/recharge_price.dart';
+import 'views/recharge_form/recharge_form_large.dart';
+import 'views/recharge_form/recharge_form_small.dart';
+import 'views/recharge_price.dart';
 
 class RechargeScreen extends StatefulWidget {
   const RechargeScreen({super.key});
@@ -13,8 +13,6 @@ class RechargeScreen extends StatefulWidget {
 }
 
 class _RechargeScreenState extends State<RechargeScreen> {
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _searchController = TextEditingController();
 
   String selectedPractice = 'Practice Name';
   int selectedAmount = 500;
@@ -23,8 +21,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
 
   @override
   void dispose() {
-    _amountController.dispose();
-    _searchController.dispose();
+    
     super.dispose();
   }
 
@@ -39,9 +36,9 @@ class _RechargeScreenState extends State<RechargeScreen> {
       appBar: width < 600
           ? null
           : PreferredSize(
-              preferredSize: const Size.fromHeight(65),
+              preferredSize:  Size.fromHeight(65),
               child: PreferredSizeAppBar(
-                controller: _searchController,
+                
               )),
       body: SafeArea(
         child: Padding(
@@ -55,9 +52,23 @@ class _RechargeScreenState extends State<RechargeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //Recharge
-                  const Text(
-                    "Recharge",
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+                  Row(
+                    children: [
+                    
+                      width < 600 ? SizedBox(
+                        child: DecoratedBox(decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(5))
+                        ),
+                        child: Icon(Icons.chevron_left, size: 20,),
+                        ),
+                      ): Icon(Icons.chevron_left, size: 40,),
+                      SizedBox(width: 15,),
+                      Text(
+                        "Recharge",
+                        style: TextStyle(fontSize: width < 600 ? 16 : 24, fontWeight: FontWeight.w600),
+                      ),
+                    ],
                   ),
 
                   //View History botton
@@ -67,10 +78,10 @@ class _RechargeScreenState extends State<RechargeScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 61, 140, 134),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 28, vertical: 20),
+                      padding:  EdgeInsets.symmetric(
+                          horizontal: 28, vertical:width < 600 ? 16: 20),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       elevation: 2,
                     ),
@@ -78,7 +89,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
                       "View History",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 15,
                       ),
                     ),
                   ),
@@ -93,26 +104,24 @@ class _RechargeScreenState extends State<RechargeScreen> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(width < 600 ? 0 : 8),
                     border: Border.all(
-                      color: Colors.grey.shade300,
+                      color: width < 600 ? Colors.transparent : Colors.grey.shade300,
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(24),
+                    padding:  EdgeInsets.all(width < 600 ? 0 :24),
               
                     //main row
                     child: width < 600
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                        ? ListView(
                             children: [
                               const RechargePrice(),
                               const SizedBox(height: 24),
-                              RechargeFormMobile(
+                              RechargeFormSmall(
                                 selectedPractice: selectedPractice,
                                 selectedAmount: selectedAmount,
                                 amounts: amounts,
-                                amountController: _amountController,
                               ),
                             ],
                           )
@@ -122,11 +131,10 @@ class _RechargeScreenState extends State<RechargeScreen> {
                             children: [
                               //form fields
                               Expanded(
-                                child: RechargeForm(
+                                child: RechargeFormLarge(
                                   selectedPractice: selectedPractice,
                                   selectedAmount: selectedAmount,
                                   amounts: amounts,
-                                  amountController: _amountController,
                                 ),
                               ),
                               const SizedBox(width: 24),

@@ -30,21 +30,27 @@ class _RechargePriceState extends State<RechargePrice> {
                 gradient: LinearGradient(
                   colors: [
                     Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(255, 198, 239, 245),
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 176, 209, 206),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
               ),
               child: Column(
+                
                 children: [
+                  SizedBox(height: 26,),
                   Text("Your Total Balance",
-                      style: TextStyle(color: Colors.grey)),
-                  SizedBox(height: 10),
+                      style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),)),
+                  SizedBox(height: 26,),
+
                   Text(
                     "₹60,25,201",
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),fontSize: 40, fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(height: 26,),
+
                 ],
               ),
             ),
