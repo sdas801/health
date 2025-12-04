@@ -11,7 +11,7 @@ class PreferredSizeAppBar extends StatelessWidget {
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
       elevation: 2,
-      shadowColor: Colors.black.withOpacity(0.3),
+      shadowColor: Colors.green.withAlpha(38),
       automaticallyImplyLeading: false,
       title: const SizedBox(
         height: 45,
@@ -20,11 +20,14 @@ class PreferredSizeAppBar extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: TextField(
+              textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
                 border: InputBorder.none,
                 hintText: 'Search Patients by Name, Phone Number or Patient ID',
+                isDense: true,
+                contentPadding: EdgeInsets.zero,
                 prefixIcon: Icon(Icons.search),
                 hintStyle: TextStyle(fontSize: 14),
                 hoverColor: Colors.white,
@@ -54,17 +57,32 @@ class PreferredSizeAppBar extends StatelessWidget {
             width: 1,
           ),
         ),
-         const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: DecoratedBox(decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.grey.shade200,
+                ),child: const Center(child: Icon(Icons.person_2_rounded)))),
+              ),
+
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Center(child: Icon(Icons.person_2_rounded)),
               Text("Rahul", style: TextStyle(color: Colors.black87)),
-              Icon(Icons.keyboard_arrow_down),
-            ]),
             Text('+91123445666(Beta)'),
+              
+            ]),
+              Icon(Icons.arrow_drop_down),
+
           ],
         ),
         const SizedBox(width: 20),

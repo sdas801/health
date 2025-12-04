@@ -36,14 +36,16 @@ class _RechargeSuccessDialogState extends State<RechargeSuccessDialog> {
               mainAxisSize: MainAxisSize.min,
               
               children: [
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  decoration: const BoxDecoration(
+                const DecoratedBox(
+                  decoration: BoxDecoration(
                     color: Colors.green,
                     shape: BoxShape.circle,
                 
                   ),
-                  child: const Icon(Icons.check, color: Colors.white, size: 40),
+                  child: Padding(
+                  padding: EdgeInsets.all(24),
+                    child: Icon(Icons.check, color: Colors.white, size: 40),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 const Text(
@@ -85,7 +87,7 @@ class _RechargeSuccessDialogState extends State<RechargeSuccessDialog> {
                           backgroundColor: const Color.fromARGB(255, 61, 140, 134),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>LowBalanceDialogLarge()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const LowBalanceDialogLarge()));
                           
                         },
                         child: const Text("Continue",  style: TextStyle(color: Colors.white,fontSize: 16,),),

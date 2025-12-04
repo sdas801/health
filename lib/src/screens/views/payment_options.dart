@@ -21,22 +21,20 @@ class _PaymentOptionsState extends State<PaymentOptions> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
+    width: 220,
+    child: DecoratedBox(
       decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(
-              right: BorderSide(
-            color: Colors.grey.shade300,
-            width: 1,
-          ))),
-      width: 220,
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 15),
+        color: Colors.white,
+        border: Border(
+            right: BorderSide(
+          color: Colors.grey.shade300,
+          width: 1,
+        ))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Text("Payment Methods",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-          const SizedBox(height: 30),
           MenuTile(
             title: "UPI",
             isSelected: isSelected == 'UPI',
@@ -75,6 +73,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
           ),
         ],
       ),
-    );
+    ),
+          );
   }
 }

@@ -21,22 +21,28 @@ class _MenuTileState extends State<MenuTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onTap, // this makes it clickable
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        decoration: BoxDecoration(
+        
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border(right: BorderSide(color: Colors.grey.shade300)),
           color: widget.isSelected
-              ? const Color.fromARGB(255, 234, 252, 241)
+              ? const Color(0xFFF1F6EE)
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
         ),
-        child: Text(
-          widget.title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.normal,
-            color:
-                widget.isSelected ? const Color.fromARGB(255, 21, 204, 143) : Colors.black,
+          child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+
+            child: Text(
+              widget.title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color:
+                    widget.isSelected ? const Color(0xFF57AEA6) : Colors.black,
+              ),
+            ),
           ),
         ),
       ),

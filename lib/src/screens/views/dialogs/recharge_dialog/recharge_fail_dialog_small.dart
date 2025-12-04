@@ -22,14 +22,16 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: const BoxDecoration(
+              const DecoratedBox(
+                decoration: BoxDecoration(
                   color: Color.fromARGB(255, 197, 32, 32),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.priority_high,
-                    color: Colors.white, size: 40),
+                child: Padding(
+                padding: EdgeInsets.all(24),
+                  child: Icon(Icons.priority_high,
+                      color: Colors.white, size: 40),
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
@@ -74,7 +76,7 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor: Color.fromARGB(255, 197, 32, 32),
+                        backgroundColor: const Color.fromARGB(255, 197, 32, 32),
                       ),
                       onPressed: () {
                         

@@ -26,13 +26,15 @@ class _RechargeSuccessDialogSmallState
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                padding: const EdgeInsets.all(24),
+              DecoratedBox(
                 decoration: const BoxDecoration(
                   color: Colors.green,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.check, color: Colors.white, size: 40),
+                child: Padding(
+                padding: const EdgeInsets.all(24),
+                  child: const Icon(Icons.check, color: Colors.white, size: 40),
+                ),
               ),
               const SizedBox(height: 16),
               const Text(

@@ -10,8 +10,7 @@ class RechargePrice extends StatefulWidget {
 class _RechargePriceState extends State<RechargePrice> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(1),
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -24,34 +23,37 @@ class _RechargePriceState extends State<RechargePrice> {
         children: [
           const SizedBox(
             width: double.infinity,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                gradient: LinearGradient(
-                  colors: [
-                    Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(255, 176, 209, 206),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: Column(
-                
-                children: [
-                  SizedBox(height: 26,),
-                  Text("Your Total Balance",
-                      style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),)),
-                  SizedBox(height: 26,),
-
-                  Text(
-                    "₹60,25,201",
-                    style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),fontSize: 40, fontWeight: FontWeight.bold),
+            child: Padding(
+              padding: EdgeInsets.all(1.0),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 176, 209, 206),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  SizedBox(height: 26,),
-
-                ],
+                ),
+                child: Column(
+                  
+                  children: [
+                    SizedBox(height: 26,),
+                    Text("Your Total Balance",
+                        style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),)),
+                    SizedBox(height: 26,),
+                    
+                    Text(
+                      "₹60,25,201",
+                      style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 26,),
+                    
+                  ],
+                ),
               ),
             ),
           ),
