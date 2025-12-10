@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
 import '../dialogs/show_recharge_confirmation/show_recharge_confirmation_large.dart';
 
 class RechargeFormLarge extends StatefulWidget {
@@ -46,14 +46,28 @@ class _RechargeFormLargeState extends State<RechargeFormLarge> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField(
-          value: selectedPractice,
-          decoration:  InputDecoration(
+          initialValue: selectedPractice,
+          decoration: InputDecoration(
             labelText: "Practice Name",
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: const BorderRadius.all(Radius.circular(10),),),
-            focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
           ),
           items: ['Practice Name', 'Practice 2', 'Practice 3']
-              .map((e) => DropdownMenuItem(value: e, child: Text(e),),)
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e,
+                  child: Text(e),
+                ),
+              )
               .toList(),
           onChanged: (v) => setState(() => selectedPractice = v!),
         ),
@@ -64,28 +78,41 @@ class _RechargeFormLargeState extends State<RechargeFormLarge> {
           spacing: 12,
           children: amounts.map((e) {
             return ChoiceChip(
-              
               label: Text("₹ $e"),
-                    showCheckmark: false,
-                    side: BorderSide.none,
-                    backgroundColor: Colors.grey.shade300 ,
+              showCheckmark: false,
+              side: BorderSide.none,
+              backgroundColor: Colors.grey.shade300,
               selectedColor: const Color.fromARGB(255, 238, 252, 238),
-              labelStyle: TextStyle(color: selectedAmount == e?  const Color.fromARGB(255, 61, 140, 134) : Colors.black),
+              labelStyle: TextStyle(
+                  color: selectedAmount == e
+                      ? const Color.fromARGB(255, 61, 140, 134)
+                      : Colors.black),
               selected: selectedAmount == e,
               onSelected: (_) => _selectAmount(e),
             );
           }).toList(),
         ),
         const SizedBox(height: 20),
-         TextField(
+        TextField(
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: BorderRadius.all(Radius.circular(10),),),
-            focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
             hintText: "Enter custom amount",
           ),
         ),
         const SizedBox(height: 25),
+
+        //Recharge Now - Button
         SizedBox(
           width: double.infinity,
           height: 48,
@@ -110,8 +137,11 @@ class _RechargeFormLargeState extends State<RechargeFormLarge> {
 void _showRechargeConfirmation(BuildContext context) {
   showDialog(
     context: context,
+    barrierColor: Colors.black.withValues(alpha: 0.3),
     builder: (BuildContext context) {
-      return const ShowRechargeConfirmationLarge();
+      return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: const ShowRechargeConfirmationLarge());
     },
   );
 }

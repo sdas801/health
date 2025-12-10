@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/screens/recharge_screen.dart';
+import 'src/pages/recharge.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const RechargeScreen(),
-      
     );
   }
 }

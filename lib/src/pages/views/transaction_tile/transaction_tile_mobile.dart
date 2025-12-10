@@ -18,14 +18,12 @@ class _TransactionTileMobileState extends State<TransactionTileMobile> {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: Colors.grey.shade200),
         ),
-      
         child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           child: Column(
             children: [
               Row(
                 children: [
-                
                   // Icon Circle
                   DecoratedBox(
                     decoration: BoxDecoration(
@@ -33,13 +31,14 @@ class _TransactionTileMobileState extends State<TransactionTileMobile> {
                       shape: BoxShape.circle,
                     ),
                     child: const Padding(
-                    padding: EdgeInsets.all(10),
-                      child: Icon(Icons.arrow_circle_up, color: Colors.green, size: 22),
+                      padding: EdgeInsets.all(10),
+                      child: Icon(Icons.arrow_circle_up,
+                          color: Colors.green, size: 22),
                     ),
                   ),
-                
+
                   const SizedBox(width: 12),
-                
+
                   // Text Section
                   Expanded(
                     child: Column(
@@ -47,7 +46,8 @@ class _TransactionTileMobileState extends State<TransactionTileMobile> {
                       children: [
                         const Text(
                           "Account Recharge",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -61,7 +61,7 @@ class _TransactionTileMobileState extends State<TransactionTileMobile> {
                       ],
                     ),
                   ),
-                
+
                   // Amount
                   const Text(
                     "+₹1500",
@@ -71,36 +71,31 @@ class _TransactionTileMobileState extends State<TransactionTileMobile> {
                       color: Colors.green,
                     ),
                   ),
-                
-                  
-                  
                 ],
               ),
               const SizedBox(height: 12),
-                
               SizedBox(
-                  width: double.infinity,
-
+                width: double.infinity,
                 child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        child: Align(
-                                          alignment: Alignment.center,
-                          child: Text(
-                            "Invoice",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Color.fromARGB(255, 76, 175, 150),
-                            ),
-                          ),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Invoice",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 76, 175, 150),
                         ),
                       ),
                     ),
+                  ),
+                ),
               ),
             ],
           ),

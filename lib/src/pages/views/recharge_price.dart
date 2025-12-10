@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RechargePrice extends StatefulWidget {
+class RechargePrice extends StatelessWidget {
   const RechargePrice({super.key});
 
-  @override
-  State<RechargePrice> createState() => _RechargePriceState();
-}
-
-class _RechargePriceState extends State<RechargePrice> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -19,6 +14,7 @@ class _RechargePriceState extends State<RechargePrice> {
         ),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
@@ -39,19 +35,27 @@ class _RechargePriceState extends State<RechargePrice> {
                   ),
                 ),
                 child: Column(
-                  
                   children: [
-                    SizedBox(height: 26,),
+                    SizedBox(
+                      height: 26,
+                    ),
                     Text("Your Total Balance",
-                        style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),)),
-                    SizedBox(height: 26,),
-                    
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 61, 140, 134),
+                        )),
+                    SizedBox(
+                      height: 26,
+                    ),
                     Text(
                       "₹60,25,201",
-                      style: TextStyle(color: Color.fromARGB(255, 61, 140, 134),fontSize: 40, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 61, 140, 134),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 26,),
-                    
+                    SizedBox(
+                      height: 26,
+                    ),
                   ],
                 ),
               ),

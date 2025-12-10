@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/src/pages/transaction_history.dart';
 
-class RechargeFailDialogSmall extends StatefulWidget {
-  const RechargeFailDialogSmall({super.key});
+import '../alert_dialog/low_balance_dialog_small.dart';
+
+class RechargeSuccessDialogSmall extends StatefulWidget {
+  const RechargeSuccessDialogSmall({super.key});
 
   @override
-  State<RechargeFailDialogSmall> createState() =>
-      _RechargeFailDialogSmallState();
+  State<RechargeSuccessDialogSmall> createState() =>
+      _RechargeSuccessDialogSmallState();
 }
 
-class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
+class _RechargeSuccessDialogSmallState
+    extends State<RechargeSuccessDialogSmall> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,25 +26,24 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 197, 32, 32),
+              DecoratedBox(
+                decoration: const BoxDecoration(
+                  color: Colors.green,
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
-                padding: EdgeInsets.all(24),
-                  child: Icon(Icons.priority_high,
-                      color: Colors.white, size: 40),
+                  padding: const EdgeInsets.all(24),
+                  child: const Icon(Icons.check, color: Colors.white, size: 40),
                 ),
               ),
               const SizedBox(height: 16),
               const Text(
-                "Recharge Failed",
+                "Recharge Successful",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "Your recharge was Failed of ₹5000, please try Again",
+                "Your recharge was Successful of ₹5000 was credited to your wallet",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
@@ -50,7 +53,11 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const TransactionHistory()));
                       },
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Colors.grey.shade400),
@@ -60,7 +67,7 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
                         ),
                       ),
                       child: const Text(
-                        "Cancel",
+                        "View History",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -76,13 +83,17 @@ class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor: const Color.fromARGB(255, 197, 32, 32),
+                        backgroundColor:
+                            const Color.fromARGB(255, 61, 140, 134),
                       ),
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () => showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) => const LowBalanceDialogSmall(),
+                      ),
                       child: const Text(
-                        "Retry Payment",
+                        "Continue",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

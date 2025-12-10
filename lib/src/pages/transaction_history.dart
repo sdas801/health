@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/screens/views/transaction_search.dart';
-import 'package:my_app/src/screens/views/transaction_tile.dart';
+import 'package:my_app/src/pages/views/transaction_search.dart';
+import 'package:my_app/src/pages/views/transaction_tile/transaction_tile.dart';
 
 import '../contants/preferred_size_app_bar.dart';
-import 'views/transaction_tile_mobile.dart';
+import 'views/transaction_tile/transaction_tile_mobile.dart';
 
 class TransactionHistory extends StatefulWidget {
   const TransactionHistory({super.key});
@@ -25,9 +25,10 @@ class _TransactionHistoryState extends State<TransactionHistory> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        var width = constraints.maxWidth;
+        final double width = constraints.maxWidth;
+        final bool isMobileScreen = width < 600;
         return Scaffold(
-          appBar: width < 600
+          appBar: isMobileScreen
               ? null
               : const PreferredSize(
                   preferredSize: Size.fromHeight(60),
@@ -44,60 +45,59 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        width < 600
-                            ? GestureDetector(
-                              onTap: ()=>Navigator.of(context).pop(),
-                              child: SizedBox(
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Colors.grey.shade300),
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(5))),
-                                    child: const Icon(
-                                      Icons.chevron_left,
-                                      size: 20,
-                                    ),
+                        isMobileScreen
+                            ? InkWell(
+                                onTap: () => Navigator.of(context).pop(),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey.shade300),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(5))),
+                                  child: const Icon(
+                                    Icons.chevron_left,
+                                    size: 20,
                                   ),
                                 ),
-                            )
-                            : GestureDetector(
-                              onTap: ()=>Navigator.of(context).pop(),
-                              child: const Icon(
+                              )
+                            : InkWell(
+                                onTap: () => Navigator.of(context).pop(),
+                                child: const Icon(
                                   Icons.chevron_left,
                                   size: 40,
                                 ),
-                            ),
+                              ),
                         const SizedBox(
-                              width: 15,
-                            ),
-                        //Recharge
+                          width: 15,
+                        ),
+                        //Header - Transaction History
                         Text(
                           "Transaction History",
                           style: TextStyle(
-                              fontSize: width < 600 ? 16 : 24,
+                              fontSize: isMobileScreen ? 16 : 24,
                               fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
-                  ), 
+                  ),
+
+                  //body container
                   Expanded(
                     flex: 1,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: width < 600 ? Colors.transparent : Colors.white,
+                        color:
+                            isMobileScreen ? Colors.transparent : Colors.white,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: width < 600
+                          color: isMobileScreen
                               ? Colors.transparent
                               : Colors.grey.shade300,
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(width < 600 ? 0 : 24),
-
-                        //main row
-                        child: width < 600
+                        padding: EdgeInsets.all(isMobileScreen ? 0 : 24),
+                        child: isMobileScreen
                             ? Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [

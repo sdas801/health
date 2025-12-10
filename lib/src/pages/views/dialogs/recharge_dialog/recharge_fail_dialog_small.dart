@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/screens/transaction_history.dart';
 
-import '../alert_dialog/low_balance_dialog_small.dart';
-
-class RechargeSuccessDialogSmall extends StatefulWidget {
-  const RechargeSuccessDialogSmall({super.key});
+class RechargeFailDialogSmall extends StatefulWidget {
+  const RechargeFailDialogSmall({super.key});
 
   @override
-  State<RechargeSuccessDialogSmall> createState() =>
-      _RechargeSuccessDialogSmallState();
+  State<RechargeFailDialogSmall> createState() =>
+      _RechargeFailDialogSmallState();
 }
 
-class _RechargeSuccessDialogSmallState
-    extends State<RechargeSuccessDialogSmall> {
+class _RechargeFailDialogSmallState extends State<RechargeFailDialogSmall> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,24 +22,25 @@ class _RechargeSuccessDialogSmallState
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              DecoratedBox(
-                decoration: const BoxDecoration(
-                  color: Colors.green,
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 197, 32, 32),
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
-                padding: const EdgeInsets.all(24),
-                  child: const Icon(Icons.check, color: Colors.white, size: 40),
+                  padding: EdgeInsets.all(24),
+                  child:
+                      Icon(Icons.priority_high, color: Colors.white, size: 40),
                 ),
               ),
               const SizedBox(height: 16),
               const Text(
-                "Recharge Successful",
+                "Recharge Failed",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "Your recharge was Successful of ₹5000 was credited to your wallet",
+                "Your recharge was Failed of ₹5000, please try Again",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
@@ -53,11 +50,7 @@ class _RechargeSuccessDialogSmallState
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const TransactionHistory()));
+                        Navigator.pop(context);
                       },
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Colors.grey.shade400),
@@ -67,7 +60,7 @@ class _RechargeSuccessDialogSmallState
                         ),
                       ),
                       child: const Text(
-                        "View History",
+                        "Cancel",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -83,17 +76,11 @@ class _RechargeSuccessDialogSmallState
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor:
-                            const Color.fromARGB(255, 61, 140, 134),
+                        backgroundColor: const Color.fromARGB(255, 197, 32, 32),
                       ),
-                      onPressed: () => showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        builder: (context) => const LowBalanceDialogSmall(),
-                      ),
+                      onPressed: () {},
                       child: const Text(
-                        "Continue",
+                        "Retry Payment",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

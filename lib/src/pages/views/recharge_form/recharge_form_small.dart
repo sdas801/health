@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
 import '../dialogs/show_recharge_confirmation/show_recharge_confirmation_small.dart';
 
 class RechargeFormSmall extends StatefulWidget {
@@ -12,8 +12,7 @@ class RechargeFormSmall extends StatefulWidget {
     required this.selectedPractice,
     required this.amounts,
     required this.selectedAmount,
-    
-    });
+  });
 
   @override
   State<RechargeFormSmall> createState() => _RechargeFormSmallState();
@@ -24,12 +23,12 @@ class _RechargeFormSmallState extends State<RechargeFormSmall> {
   late List<int> amounts;
   late int selectedAmount;
 
-@override
+  @override
   void dispose() {
     super.dispose();
   }
 
-@override
+  @override
   void initState() {
     super.initState();
     selectedPractice = widget.selectedPractice;
@@ -37,7 +36,7 @@ class _RechargeFormSmallState extends State<RechargeFormSmall> {
     selectedAmount = widget.selectedAmount;
   }
 
-void _selectAmount(int amount) {
+  void _selectAmount(int amount) {
     setState(() {
       selectedAmount = amount;
     });
@@ -49,14 +48,22 @@ void _selectAmount(int amount) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField(
-          
-          value: selectedPractice,
-          decoration:  InputDecoration(
+          initialValue: selectedPractice,
+          decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             labelText: "Practice Name",
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300),borderRadius: BorderRadius.all(Radius.circular(10),),),
-            focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10),),),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
           ),
           items: ['Practice Name', 'Practice 2', 'Practice 3']
               .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -70,37 +77,38 @@ void _selectAmount(int amount) {
           spacing: 12,
           children: amounts.map((e) {
             return ChoiceChip(
-              
               label: Text("₹ $e"),
-                    showCheckmark: false,
-                    side: BorderSide.none,
-                    backgroundColor: Colors.grey.shade300 ,
-              selectedColor: Color.fromARGB(255, 238, 252, 238),
-              labelStyle: TextStyle(color: selectedAmount == e?  const Color.fromARGB(255, 61, 140, 134) : Colors.black),
+              showCheckmark: false,
+              side: BorderSide.none,
+              backgroundColor: Colors.grey.shade300,
+              selectedColor: const Color.fromARGB(255, 238, 252, 238),
+              labelStyle: TextStyle(
+                  color: selectedAmount == e
+                      ? const Color.fromARGB(255, 61, 140, 134)
+                      : Colors.black),
               selected: selectedAmount == e,
               onSelected: (_) => _selectAmount(e),
             );
           }).toList(),
         ),
         const SizedBox(height: 20),
-         TextField(
+        TextField(
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderSide: BorderSide(color: Colors.grey.shade300)),
+            focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              borderSide: BorderSide(color: Colors.grey.shade300)
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-
-            ),
-            
             hintText: "Enter custom amount",
           ),
         ),
         const SizedBox(height: 25),
+
+        //Recharge Now - Button
         SizedBox(
           width: double.infinity,
           height: 48,
@@ -111,13 +119,17 @@ void _selectAmount(int amount) {
               backgroundColor: Colors.teal.shade600,
             ),
             onPressed: () => showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    builder: (context) => const ShowRechargeConfirmationSmall(),
-                  ),
-            child: const Text("Recharge Now",
-                style: TextStyle(fontSize: 16, color: Colors.white),),
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (context) => BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: const ShowRechargeConfirmationSmall()),
+            ),
+            child: const Text(
+              "Recharge Now",
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
           ),
         ),
       ],
