@@ -4,6 +4,7 @@ import '../contants/preferred_size_app_bar.dart';
 import 'views/recharge_form/recharge_form_large.dart';
 import 'views/recharge_form/recharge_form_small.dart';
 import 'views/recharge_price.dart';
+import '../contants/colors.dart';
 
 class RechargeScreen extends StatelessWidget {
   const RechargeScreen({super.key});
@@ -79,8 +80,7 @@ class RechargeScreen extends StatelessWidget {
                                       const TransactionHistory()));
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 61, 140, 134),
+                          backgroundColor: mainColor,
                           padding: EdgeInsets.symmetric(
                               horizontal: 28,
                               vertical: isMobileScreen ? 16 : 20),
@@ -121,55 +121,59 @@ class RechargeScreen extends StatelessWidget {
 
                         //Payment
                         child: isMobileScreen
-                            ? Column(
-                                children: [
-                                  const RechargePrice(),
-                                  const SizedBox(height: 24),
-                                  RechargeFormSmall(
-                                    selectedPractice: selectedPractice,
-                                    selectedAmount: selectedAmount,
-                                    amounts: amounts,
-                                  ),
-                                ],
+                            ? SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const RechargePrice(),
+                                    const SizedBox(height: 24),
+                                    RechargeFormSmall(
+                                      selectedPractice: selectedPractice,
+                                      selectedAmount: selectedAmount,
+                                      amounts: amounts,
+                                    ),
+                                  ],
+                                ),
                               )
                             : isTabScreen
-                                ? Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      //price container
-                                      const Expanded(child: RechargePrice()),
+                                ? SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        //price container
+                                        RechargePrice(),
 
-                                      const SizedBox(width: 24),
+                                        SizedBox(height: 24),
 
-                                      //form fields container
+                                        //form fields container
 
-                                      Expanded(
-                                        child: RechargeFormLarge(
+                                        RechargeFormLarge(
                                           selectedPractice: selectedPractice,
                                           selectedAmount: selectedAmount,
                                           amounts: amounts,
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   )
-                                : Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      //form fields container
-                                      Expanded(
-                                        child: RechargeFormLarge(
-                                          selectedPractice: selectedPractice,
-                                          selectedAmount: selectedAmount,
-                                          amounts: amounts,
+                                : SingleChildScrollView(
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        //form fields container
+                                        Expanded(
+                                          child: RechargeFormLarge(
+                                            selectedPractice: selectedPractice,
+                                            selectedAmount: selectedAmount,
+                                            amounts: amounts,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(width: 24),
+                                        const SizedBox(width: 24),
 
-                                      //price container
-                                      const Expanded(child: RechargePrice()),
-                                    ],
+                                        //price container
+                                        const Expanded(child: RechargePrice()),
+                                      ],
+                                    ),
                                   ),
                       ),
                     ),
