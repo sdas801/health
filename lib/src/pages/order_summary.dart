@@ -223,133 +223,137 @@ class _OrderSummaryState extends State<OrderSummary> {
     return isMobileScreen
         ? Scaffold(
             backgroundColor: Colors.grey.shade200,
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: () => Navigator.of(context).pop(),
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey.shade300),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5))),
-                            child: const Icon(
-                              Icons.chevron_left,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            "Payment Methods",
-                            style: TextStyle(
-                                fontSize: isMobileScreen ? 16 : 24,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ],
+            body: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
                     ),
-                  ),
-                ),
-
-                /// To Pay Section
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: const Text(
-                    "To Pay: ₹5900",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 76, 155, 175)),
-                  ),
-                ),
-                Expanded(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(color: Colors.white),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: ListView(
+                      child: Row(
                         children: [
-                          const SizedBox(height: 10),
-                          _sectionTitle("Saved UPI ID"),
-                          const SizedBox(height: 10),
-
-                          /// Saved UPI List
-                          PaymentRadioTile(
-                            icon: 'assets/images/phonepe.png',
-                            value: "1",
-                            title: "PhonePe",
-                            subtitle: "8794651256@ybl",
-                            groupValue: selectedSavedUpi,
-                            onChanged: (v) =>
-                                setState(() => selectedSavedUpi = v!),
+                          InkWell(
+                            onTap: () => Navigator.of(context).pop(),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(color: Colors.grey.shade300),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5))),
+                              child: const Icon(
+                                Icons.chevron_left,
+                                size: 20,
+                              ),
+                            ),
                           ),
-                          PaymentRadioTile(
-                            icon: 'assets/images/phonepe.png',
-                            value: "2",
-                            title: "PhonePe",
-                            subtitle: "8794651256@ybl",
-                            groupValue: selectedSavedUpi,
-                            onChanged: (v) =>
-                                setState(() => selectedSavedUpi = v!),
-                          ),
-
-                          const SizedBox(height: 10),
-                          _sectionTitle("Pay UPI ID"),
-                          const SizedBox(height: 10),
-
-                          _upiBox(),
-
-                          const SizedBox(height: 15),
-                          _sectionTitle("Credit & Debit Cards"),
-                          const SizedBox(height: 10),
-
-                          _cardAddBox(),
-
-                          const SizedBox(height: 15),
-                          _sectionTitle("Net banking"),
-                          const SizedBox(height: 10),
-
-                          _netBankingRow(),
-
-                          const SizedBox(height: 15),
-                          _sectionTitle("Wallets"),
-                          const SizedBox(height: 10),
-
-                          /// Wallets — radio buttons
-                          PaymentRadioTile(
-                            icon: 'assets/images/phonepe.png',
-                            value: "phonepe_wallet",
-                            title: "PhonePe Wallet",
-                            subtitle: "Balance: ₹7.99",
-                            groupValue: selectedWallet,
-                            onChanged: (v) =>
-                                setState(() => selectedWallet = v!),
-                          ),
-                          PaymentRadioTile(
-                            icon: 'assets/images/amazon_pay.png',
-                            value: "amazon",
-                            title: "Amazon Pay Balance",
-                            subtitle: "Balance: ₹7.99",
-                            groupValue: selectedWallet,
-                            onChanged: (v) =>
-                                setState(() => selectedWallet = v!),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text(
+                              "Payment Methods",
+                              style: TextStyle(
+                                  fontSize: isMobileScreen ? 16 : 24,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                )
-              ],
+
+                  /// To Pay Section
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: const Text(
+                      "To Pay: ₹5900",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 76, 155, 175)),
+                    ),
+                  ),
+                  Expanded(
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ListView(
+                          children: [
+                            const SizedBox(height: 10),
+                            _sectionTitle("Saved UPI ID"),
+                            const SizedBox(height: 10),
+
+                            /// Saved UPI List
+                            PaymentRadioTile(
+                              icon: 'assets/images/phonepe.png',
+                              value: "1",
+                              title: "PhonePe",
+                              subtitle: "8794651256@ybl",
+                              groupValue: selectedSavedUpi,
+                              onChanged: (v) =>
+                                  setState(() => selectedSavedUpi = v!),
+                            ),
+                            PaymentRadioTile(
+                              icon: 'assets/images/phonepe.png',
+                              value: "2",
+                              title: "PhonePe",
+                              subtitle: "8794651256@ybl",
+                              groupValue: selectedSavedUpi,
+                              onChanged: (v) =>
+                                  setState(() => selectedSavedUpi = v!),
+                            ),
+
+                            const SizedBox(height: 10),
+                            _sectionTitle("Pay UPI ID"),
+                            const SizedBox(height: 10),
+
+                            _upiBox(),
+
+                            const SizedBox(height: 15),
+                            _sectionTitle("Credit & Debit Cards"),
+                            const SizedBox(height: 10),
+
+                            _cardAddBox(),
+
+                            const SizedBox(height: 15),
+                            _sectionTitle("Net banking"),
+                            const SizedBox(height: 10),
+
+                            _netBankingRow(),
+
+                            const SizedBox(height: 15),
+                            _sectionTitle("Wallets"),
+                            const SizedBox(height: 10),
+
+                            /// Wallets — radio buttons
+                            PaymentRadioTile(
+                              icon: 'assets/images/phonepe.png',
+                              value: "phonepe_wallet",
+                              title: "PhonePe Wallet",
+                              subtitle: "Balance: ₹7.99",
+                              groupValue: selectedWallet,
+                              onChanged: (v) =>
+                                  setState(() => selectedWallet = v!),
+                            ),
+                            PaymentRadioTile(
+                              icon: 'assets/images/amazon_pay.png',
+                              value: "amazon",
+                              title: "Amazon Pay Balance",
+                              subtitle: "Balance: ₹7.99",
+                              groupValue: selectedWallet,
+                              onChanged: (v) =>
+                                  setState(() => selectedWallet = v!),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         //large screen
