@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../order_summary.dart';
+import '../../../order_summary/order_summary.dart';
 
 class ShowRechargeConfirmationLarge extends StatefulWidget {
   const ShowRechargeConfirmationLarge({super.key});

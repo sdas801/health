@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/pages/recharge.dart';
+import 'src/pages/recharge/recharge.dart';
 
 void main() {
   runApp(const MyApp());

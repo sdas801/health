@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../order_summary.dart';
+import '../../../order_summary/order_summary.dart';
 
 class ShowRechargeConfirmationSmall extends StatefulWidget {
   const ShowRechargeConfirmationSmall({super.key});
@@ -14,7 +14,6 @@ class _ShowRechargeConfirmationSmallState
     extends State<ShowRechargeConfirmationSmall> {
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
       width: double.infinity,
       child: DecoratedBox(
@@ -34,7 +33,7 @@ class _ShowRechargeConfirmationSmallState
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: ()=> Navigator.of(context).pop(),
+                        onTap: () => Navigator.of(context).pop(),
                         child: Icon(
                           Icons.chevron_left,
                           size: 40,
@@ -47,7 +46,6 @@ class _ShowRechargeConfirmationSmallState
                       ),
                     ],
                   ),
-                  
                 ],
               ),
               const SizedBox(height: 24),

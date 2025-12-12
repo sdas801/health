@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:my_app/src/contants/preferred_size_app_bar.dart';
-import 'package:my_app/src/pages/views/order_summary_widgets/payment_options.dart';
-import 'package:my_app/src/pages/views/order_summary_widgets/recharge_qr.dart';
+import 'package:my_app/src/widgets/preferred_size_app_bar.dart';
+import 'package:my_app/src/pages/order_summary/widgets/order_summary_widgets/payment_options.dart';
+import 'package:my_app/src/pages/order_summary/widgets/order_summary_widgets/recharge_qr.dart';
 
-import 'views/dialogs/add_upi/add_new_upi_small.dart';
+import 'widgets/add_upi/add_new_upi_small.dart';
 
 class OrderSummary extends StatefulWidget {
   const OrderSummary({super.key});

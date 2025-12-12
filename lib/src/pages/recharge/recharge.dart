@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/pages/transaction_history.dart';
-import '../contants/preferred_size_app_bar.dart';
-import 'views/recharge_form/recharge_form_large.dart';
-import 'views/recharge_form/recharge_form_small.dart';
-import 'views/recharge_price.dart';
-import '../contants/colors.dart';
+import 'package:my_app/src/pages/transaction_history/transaction_history.dart';
+import '../../widgets/preferred_size_app_bar.dart';
+import 'widgets/recharge_form/recharge_form_large.dart';
+import 'widgets/recharge_form/recharge_form_small.dart';
+import 'widgets/recharge_price.dart';
+import '../../contants/colors.dart';
 
 class RechargeScreen extends StatelessWidget {
   const RechargeScreen({super.key});

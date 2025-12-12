@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import '../dialogs/show_recharge_confirmation/show_recharge_confirmation_small.dart';
+import '../show_recharge_confirmation/show_recharge_confirmation_small.dart';
 
 class RechargeFormSmall extends StatefulWidget {
   final String selectedPractice;

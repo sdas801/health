@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/pages/views/transaction_search.dart';
-import 'package:my_app/src/pages/views/transaction_tile/transaction_tile.dart';
+import 'package:my_app/src/pages/transaction_history/widgets/transaction_search.dart';
+import 'package:my_app/src/pages/transaction_history/widgets/transaction_tile/transaction_tile.dart';
 
-import '../contants/preferred_size_app_bar.dart';
-import 'views/transaction_tile/transaction_tile_mobile.dart';
+import '../../widgets/preferred_size_app_bar.dart';
+import 'widgets/transaction_tile/transaction_tile_mobile.dart';
 
 class TransactionHistory extends StatefulWidget {
   const TransactionHistory({super.key});

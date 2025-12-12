@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/pages/transaction_history.dart';
+import 'package:my_app/src/pages/transaction_history/transaction_history.dart';
 
-import '../alert_dialog/low_balance_dialog_large.dart';
+import '../../../order_summary/widgets/alert_dialog/low_balance_dialog_large.dart';
 
 class RechargeSuccessDialog extends StatefulWidget {
   const RechargeSuccessDialog({super.key});

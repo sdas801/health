@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui';
-import '../dialogs/add_upi/add_new_upi_large.dart';
-import '../dialogs/recharge_dialog/recharge_fail_dialog_large.dart';
-import '../dialogs/recharge_dialog/recharge_fail_dialog_small.dart';
-import '../dialogs/recharge_dialog/recharge_success_dialog_large.dart';
-import '../dialogs/recharge_dialog/recharge_success_dialog_small.dart';
+import '../add_upi/add_new_upi_large.dart';
+import '../../../recharge/widgets/recharge_dialog/recharge_fail_dialog_large.dart';
+import '../../../recharge/widgets/recharge_dialog/recharge_fail_dialog_small.dart';
+import '../../../recharge/widgets/recharge_dialog/recharge_success_dialog_large.dart';
+import '../../../recharge/widgets/recharge_dialog/recharge_success_dialog_small.dart';
 import 'upi_tile.dart';
 
 class RechargeQr extends StatefulWidget {

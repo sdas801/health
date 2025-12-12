@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import '../dialogs/show_recharge_confirmation/show_recharge_confirmation_large.dart';
-import '../../../contants/colors.dart';
+import '../show_recharge_confirmation/show_recharge_confirmation_large.dart';
+import '../../../../contants/colors.dart';
 
 class RechargeFormLarge extends StatefulWidget {
   final String selectedPractice;

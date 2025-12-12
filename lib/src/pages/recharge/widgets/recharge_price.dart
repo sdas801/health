@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../../contants/colors.dart';
+import '../../../contants/colors.dart';
 
 class RechargePrice extends StatelessWidget {
   const RechargePrice({super.key});

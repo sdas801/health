@@ -31,7 +31,7 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Add New UPI",
                       style: TextStyle(
                         fontSize: 18,
@@ -40,12 +40,12 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.close, size: 22),
+                      icon: const Icon(Icons.close, size: 22),
                     ),
                   ],
                 ),
 
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // UPI TextField
                 TextField(
@@ -54,19 +54,24 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 12),
                   ),
                 ),
 
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
-                Text(
-                  "A collect request will be sent to this UPI ID",
-                  style: TextStyle(fontSize: 14),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "A collect request will be sent to this UPI ID",
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
 
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
 
                 // Checkbox
                 Row(
@@ -75,7 +80,7 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                       value: true,
                       onChanged: (v) {},
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Text(
                         "Securely save my UPI ID for future use",
                         style: TextStyle(fontSize: 14),
@@ -84,7 +89,7 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                   ],
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Bottom button
                 SizedBox(
@@ -99,11 +104,11 @@ class _AddNewUpiLargeState extends State<AddNewUpiLarge> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: Text("Verify & Pay ₹5900"),
+                    child: const Text("Verify & Pay ₹5900"),
                   ),
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ),

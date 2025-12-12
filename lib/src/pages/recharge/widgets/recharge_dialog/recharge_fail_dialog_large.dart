@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../alert_dialog/critical_low_dislog_large.dart';
+import '../../../order_summary/widgets/alert_dialog/critical_low_dislog_large.dart';
 
 class RechargeFailDialog extends StatefulWidget {
   const RechargeFailDialog({super.key});
@@ -21,9 +21,9 @@ class _RechargeFailDialogState extends State<RechargeFailDialog> {
       child: SizedBox(
         width: 400,
         child: DecoratedBox(
-          decoration: const BoxDecoration(color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(16))
-          ),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(16))),
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -35,7 +35,7 @@ class _RechargeFailDialogState extends State<RechargeFailDialog> {
                     shape: BoxShape.circle,
                   ),
                   child: Padding(
-                  padding: EdgeInsets.all(24),
+                    padding: EdgeInsets.all(24),
                     child: Icon(Icons.priority_high,
                         color: Colors.white, size: 40),
                   ),
@@ -83,10 +83,15 @@ class _RechargeFailDialogState extends State<RechargeFailDialog> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          backgroundColor: const Color.fromARGB(255, 197, 32, 32),
+                          backgroundColor:
+                              const Color.fromARGB(255, 197, 32, 32),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const CriticalLowDialogLarge())); // close dialog
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CriticalLowDialogLarge())); // close dialog
                         },
                         child: const Text(
                           "Retry Payment",
